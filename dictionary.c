@@ -45,5 +45,5 @@ int d_read_from_file(const char * filename) {
 }
 
 int d_lookup(const char * word, char * meaning) {
-  
+  //meaning = meaning associated with a successful lookup (look at ht_lookup)
 }
