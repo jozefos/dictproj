@@ -20,7 +20,7 @@ struct entry
 void d_initialise() {
   struct dictionary d;
   d->cword  = "";
-  d->dict   = new_ht(26, hashfunc, getkeyfunc);
+  d->dict   = new_ht(26, hashfunc, getkeyfunc); //compare how this is done in david's examples
 }
   
   /* array of arrays of entry's */
