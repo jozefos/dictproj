@@ -1,0 +1,8 @@
+To do:
+
+1 Find hashing algorithm, adapt it to hash function
+2 Write get key function (extract word from line then hash it)
+3 Look up how circular links are used to deal with collisions
+4 Adapt item 3 for BST's/AVL's
+5 Look up how to tell the BST/AVL how to deal with chars
+6 Adapt for placing entries into the tree
