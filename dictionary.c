@@ -7,7 +7,6 @@
 
 struct dictionary
 {
-  char[]              cword;
   ht_implementation   dict;
 };
 
@@ -18,22 +17,21 @@ struct entry
 };
 
 int hashfun(struct entry e) {
-  char * word = getkeyfun(e->word);
+  int hash;
+  char *ptr;
+  char * word = getkeyfun(e);
   //run getkeyfun, execute hash algorithm on it, return hash value
+  hash = strtoul(word, &ptr, 10) % 4093;
+  return hash;
 }
 
-char* getkeyfun(struct entry e) {
-  //look at David's implementation of a hash table for a function to model this on
-  //read up on strings and char*'s
-  
-  //word is key, extract from structure
-  //return word string
+char * getkeyfun(struct entry e) {
+  return e->word;
 }
 
 void d_initialise() {
   struct dictionary d = malloc(//look up malloc function
-  d->cword  = "";
-  d->dict   = new_ht(26, hashfunc, getkeyfunc); //compare how this is done in david's examples
+  d->dict   = new_ht(4093, hashfun, getkeyfun); //compare how this is done in david's examples
 }
   
 int d_read_from_file(const char * filename) {
