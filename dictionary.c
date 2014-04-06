@@ -17,9 +17,9 @@ struct entry
 };
 
 int hashfun(struct entry e) {
-  int hash;
-  char *ptr;
-  char * word = getkeyfun(e);
+  int     hash;
+  char *  ptr;
+  char *  word = getkeyfun(e);
   //run getkeyfun, execute hash algorithm on it, return hash value
   hash = strtoul(word, &ptr, 10) % 4093;
   return hash;
@@ -35,9 +35,17 @@ void d_initialise() {
 }
   
 int d_read_from_file(const char * filename) {
+  
+  FILE *open;
   char line[MAX_WORD_SIZE + MAX_DESC_SIZE];
-  while ( fgets(line,MAX_WORD_SIZE + MAX_DESC_SIZE,filename) != ".\0" ) {
-    //hash key then place in bst along with definition;
+  char word[MAX_WORD_SIZE];
+  char desc[MAX_DESC_SIZE];
+  
+  open = fopen(filename, "r");
+  
+  fgets(open,MAX_WORD_SIZE + MAX_DESC_SIZE,filename);
+  while ( fgets(line,MAX_WORD_SIZE + MAX_DESC_SIZE,filename) != "." ) {
+    fscanf(line,"%s %[^\n]",
   }
   
 }
