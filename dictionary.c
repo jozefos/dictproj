@@ -29,8 +29,13 @@ char * getkeyfun(struct entry e) {
   return e->word;
 }
 
+entry* passToHash(entry e) {
+  //passing function
+  ht_insert(function);
+}
+
 void d_initialise() {
-  struct dictionary d = malloc(//look up malloc function
+  struct dictionary d;
   d->dict   = new_ht(4093, hashfun, getkeyfun); //compare how this is done in david's examples
 }
   
@@ -40,14 +45,17 @@ int d_read_from_file(const char * filename) {
   char line[MAX_WORD_SIZE + MAX_DESC_SIZE];
   char word[MAX_WORD_SIZE];
   char desc[MAX_DESC_SIZE];
+  entry this;
   
   fgets(open,MAX_WORD_SIZE + MAX_DESC_SIZE,filename);
   while ( fgets(line,MAX_WORD_SIZE + MAX_DESC_SIZE,filename) != "." ) {
-    entry this;
     fscanf(fp, "%s", word);
     this->word = word;
     fscanf(fp, "%[^\n]", meaning);
     this->desc = meaning;
+    ht_insert(dict,this);
+  }
+  
   }
   
 }
