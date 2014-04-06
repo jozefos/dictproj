@@ -36,16 +36,14 @@ void d_initialise() {
   
 int d_read_from_file(const char * filename) {
   
-  FILE *open;
+  FILE *open = fopen(filename, "r");
   char line[MAX_WORD_SIZE + MAX_DESC_SIZE];
   char word[MAX_WORD_SIZE];
   char desc[MAX_DESC_SIZE];
   
-  open = fopen(filename, "r");
-  
   fgets(open,MAX_WORD_SIZE + MAX_DESC_SIZE,filename);
   while ( fgets(line,MAX_WORD_SIZE + MAX_DESC_SIZE,filename) != "." ) {
-    fscanf(line,"%s %[^\n]",
+    fgets(line,"%s %[^\n]",
   }
   
 }
