@@ -75,6 +75,7 @@ int ht_insert(ht *t, any x)
     int j;
     char* k = t->getkey(x);
     //insert desc as well
+    //insert sorted
     j = t->h1(k);
     clist_goto_last(t->items[j]);
     clist_ins_after(t->items[j], x);
