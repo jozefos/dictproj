@@ -51,17 +51,34 @@ int d_read_from_file(const char * filename) {
   while ( fgets(line,MAX_WORD_SIZE + MAX_DESC_SIZE,filename) != "." ) {
     fscanf(fp, "%s", word);
     this->word = word;
-    fscanf(fp, "%[^\n]", meaning);
-    this->desc = meaning;
+    fscanf(fp, "%[^\n]", desc);
+    this->desc = desc;
     ht_insert(dict,this);
   }
-  
-  }
-  
+  fclose(fp);
 }
 
 int d_lookup(const char * word, char * meaning) {
   //meaning = meaning associated with a successful lookup (look at ht_lookup)
+  int bucket = hashfun(word);
+  any a;
+  
+  if (clist_isempty(d->dict->items[bucket])
+    return 0;
+  else {
+    clist_goto_head(d->dict->items[bucket]);
+    while (clist_cursor_inlist(d->dict->items[bucket])) {
+      if (d->dict->getkeyfun(a = clist_get_item(d->dict->items[bucket])) {
+        meaning = d->dict->items[bucket]->desc;
+        return 1;
+      }
+      else {
+        clist_goto_next(d->dict->items[bucket]);
+      }
+    }  
+    
+    return 0;
+    
 }
 
 FILE *fp;
