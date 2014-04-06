@@ -36,14 +36,18 @@ void d_initialise() {
   
 int d_read_from_file(const char * filename) {
   
-  FILE *open = fopen(filename, "r");
+  FILE *fp = fopen(filename, "r");
   char line[MAX_WORD_SIZE + MAX_DESC_SIZE];
   char word[MAX_WORD_SIZE];
   char desc[MAX_DESC_SIZE];
   
   fgets(open,MAX_WORD_SIZE + MAX_DESC_SIZE,filename);
   while ( fgets(line,MAX_WORD_SIZE + MAX_DESC_SIZE,filename) != "." ) {
-    fgets(line,"%s %[^\n]",
+    entry this;
+    fscanf(fp, "%s", word);
+    this->word = word;
+    fscanf(fp, "%[^\n]", meaning);
+    this->desc = meaning;
   }
   
 }
@@ -51,3 +55,14 @@ int d_read_from_file(const char * filename) {
 int d_lookup(const char * word, char * meaning) {
   //meaning = meaning associated with a successful lookup (look at ht_lookup)
 }
+
+FILE *fp;
+char word[30]
+char def[200]
+fp = fopen("d1.txt", "r");
+fscanf(fp, "%s", word);
+printf("Word: %s\n", word);
+fscanf(fp, "%[^\n]", meaning);
+printf("meaning: %s\n", meaning);
+
+fclose(fp);
