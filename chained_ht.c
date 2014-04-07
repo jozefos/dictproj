@@ -73,10 +73,13 @@ int ht_insert(ht *t, any x)
 {
     assert(t!=NULL);
     int j;
+    //int size = clist_size(t);
     char* k = t->getkey(x);
     //insert desc as well
     //insert sorted
-    j = t->h1(k);
+    j = t->h1(k); //j = which bucket we're inserting into
+    //retrieve size of list
+    
     clist_goto_last(t->items[j]);
     clist_ins_after(t->items[j], x);
     (t->size)++;
