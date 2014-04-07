@@ -58,7 +58,7 @@ int d_read_from_file(const char * filename) {
     fscanf(fp+sizeof(char), "%[^\n]", this.desc);
 //    this.desc = desc;
     ht_insert(d.dict,&this);
-  }
+  }git com
   fclose(fp);
   
 }
